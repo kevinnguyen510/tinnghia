@@ -19,6 +19,15 @@ Route::get('product', 'ProductController@index');
 Route::get('product/create', 'ProductController@create');
 Route::post('product/create', 'ProductController@postCreate');
 
+//Category
+Route::get('product-category', 'ProductCategoryController@index');
+Route::get('product-category/create', 'ProductCategoryController@create');
+Route::post('product-category/postCreate', 'ProductCategoryController@postCreate');
+
+
+
+
+
 
 
 // Route::get('/','DashboardController@index');

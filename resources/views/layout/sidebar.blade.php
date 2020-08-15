@@ -102,6 +102,26 @@
                 </ul>
             </div>
         </li>
+        <li class="nav-item {{ active_class(['product-category/*']) }}">
+            <a class="nav-link" data-toggle="collapse" href="#product-pages">
+                <i class="menu-icon mdi mdi-lock-outline"></i>
+                <span class="menu-title">Danh Mục Sản phẩm</span>
+                <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse {{ show_class(['user-pages/*']) }}" id="product-pages">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item {{ active_class(['product-category']) }}">
+                        <a class="nav-link" href="{{ url('/product-category') }}">Danh sách category sản phẩm</a>
+                    </li>
+                    <li class="nav-item {{ active_class(['product-category/create']) }}">
+                        <a class="nav-link" href="{{ url('/product-category/create') }}">Tạo danh muc san pham moi</a>
+                    </li>
+
+                </ul>
+            </div>
+        </li>
+
+        <!--------- dsdsdddsdsdssddsdsdsds-------->      
         <li class="nav-item {{ active_class(['user-pages/*']) }}">
             <a class="nav-link" data-toggle="collapse" href="#user-pages" aria-expanded="{{ is_active_route(['user-pages/*']) }}" aria-controls="user-pages">
                 <i class="menu-icon mdi mdi-lock-outline"></i>
