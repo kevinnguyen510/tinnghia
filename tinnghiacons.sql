@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 18, 2020 at 05:25 AM
+-- Generation Time: Aug 18, 2020 at 11:44 AM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.2.32
 
@@ -113,6 +113,25 @@ CREATE TABLE `post_tag` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `role`
+--
+
+CREATE TABLE `role` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `role`
+--
+
+INSERT INTO `role` (`id`, `name`) VALUES
+(1, 'admin'),
+(2, 'author');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tag`
 --
 
@@ -132,17 +151,22 @@ CREATE TABLE `tag` (
 
 CREATE TABLE `user` (
   `id` bigint(20) NOT NULL,
-  `firstName` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `middleName` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `lastName` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `fullName` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `mobile` varchar(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `email` varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `passwordHash` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL,
   `registeredAt` datetime NOT NULL,
-  `lastLogin` datetime DEFAULT NULL,
-  `intro` tinytext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `profile` text COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `profile` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `role_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`id`, `fullName`, `mobile`, `email`, `passwordHash`, `registeredAt`, `profile`, `role_id`) VALUES
+(1, 'Nguyễn Quang Trung', '0376811997', 'kevinnguyen510@gmail.com', '123456', '2020-08-18 16:38:56', NULL, 1),
+(2, 'Hoàng Thị Diễm Thi', '0123456789', 'diemthi@gmail.com', '123456', '2020-08-18 16:40:10', NULL, 2);
 
 --
 -- Indexes for dumped tables
@@ -196,6 +220,12 @@ ALTER TABLE `post_tag`
   ADD KEY `fk_post_tag_post` (`postId`);
 
 --
+-- Indexes for table `role`
+--
+ALTER TABLE `role`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `tag`
 --
 ALTER TABLE `tag`
@@ -206,8 +236,8 @@ ALTER TABLE `tag`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `uq_mobile` (`mobile`),
-  ADD UNIQUE KEY `uq_email` (`email`);
+  ADD UNIQUE KEY `uq_email` (`email`),
+  ADD KEY `fk_role_user` (`role_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -238,6 +268,12 @@ ALTER TABLE `post_meta`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `role`
+--
+ALTER TABLE `role`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `tag`
 --
 ALTER TABLE `tag`
@@ -247,7 +283,7 @@ ALTER TABLE `tag`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables
@@ -292,6 +328,12 @@ ALTER TABLE `post_meta`
 ALTER TABLE `post_tag`
   ADD CONSTRAINT `fk_post_tag_post` FOREIGN KEY (`postId`) REFERENCES `post` (`id`),
   ADD CONSTRAINT `fk_post_tag_tag` FOREIGN KEY (`tagId`) REFERENCES `tag` (`id`);
+
+--
+-- Constraints for table `user`
+--
+ALTER TABLE `user`
+  ADD CONSTRAINT `fk_role_user` FOREIGN KEY (`role_id`) REFERENCES `role` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
