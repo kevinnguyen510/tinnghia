@@ -23,7 +23,10 @@ Route::post('product/create', 'ProductController@postCreate');
 Route::get('product-category', 'ProductCategoryController@index');
 Route::get('product-category/create', 'ProductCategoryController@create');
 Route::post('product-category/postCreate', 'ProductCategoryController@postCreate');
-
+//User
+Route::get('user', 'UserController@index');
+Route::get('user/create', 'UserController@create');
+Route::post('user/create', 'UserController@postCreate');
 
 
 
