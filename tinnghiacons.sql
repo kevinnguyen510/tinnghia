@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 4.9.2
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Aug 18, 2020 at 11:44 AM
--- Server version: 10.4.13-MariaDB
--- PHP Version: 7.2.32
+-- Host: localhost
+-- Generation Time: Aug 20, 2020 at 03:57 PM
+-- Server version: 10.4.11-MariaDB
+-- PHP Version: 7.2.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -36,6 +37,14 @@ CREATE TABLE `category` (
   `content` text COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `category`
+--
+
+INSERT INTO `category` (`id`, `parentId`, `title`, `metaTitle`, `slug`, `content`) VALUES
+(1, NULL, 'Thiet ke nha pho', NULL, 'thiet_ke_nha_pho', NULL),
+(2, NULL, 'thiet ke biet thu', NULL, 'thiet_ke_biet_thu', NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -58,6 +67,13 @@ CREATE TABLE `post` (
   `content` text COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `post`
+--
+
+INSERT INTO `post` (`id`, `authorId`, `parentId`, `image`, `title`, `metaTitle`, `slug`, `summary`, `published`, `createdAt`, `updatedAt`, `publishedAt`, `content`) VALUES
+(1, 2, NULL, 'https://i.pinimg.com/originals/d8/fb/b6/d8fbb62992c9be0e022f028197a9829c.jpg', 'Test 1', NULL, 'test_1', NULL, 1, '2020-08-20 00:00:00', '2020-08-20 00:00:00', '2020-08-20 00:00:00', 'huhusdosdasopdiaspda');
+
 -- --------------------------------------------------------
 
 --
@@ -68,6 +84,13 @@ CREATE TABLE `post_category` (
   `postId` bigint(20) NOT NULL,
   `categoryId` bigint(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `post_category`
+--
+
+INSERT INTO `post_category` (`postId`, `categoryId`) VALUES
+(1, 1);
 
 -- --------------------------------------------------------
 
@@ -109,6 +132,31 @@ CREATE TABLE `post_tag` (
   `postId` bigint(20) NOT NULL,
   `tagId` bigint(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `product-category`
+--
+
+CREATE TABLE `product-category` (
+  `id` int(11) NOT NULL,
+  `name` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `image` varchar(500) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `product-category`
+--
+
+INSERT INTO `product-category` (`id`, `name`, `description`, `image`) VALUES
+(1, 'iphone 5S', 'Apple Iphone 5S', 'https://www.google.com/search?q=iphone+5s&sxsrf=ALeKk00yrTNI7rrLNM0G4p9KoB4iPluRfQ:1597497046282&source=lnms&tbm=isch&sa=X&ved=2ahUKEwigt-SfpJ3rAhWOUt4KHROKC98Q_AUoAXoECAwQAw&biw=1280&bih=698#imgrc=gWf_YJARHjzxKM'),
+(2, 'Iphone X', 'Apple Iphone X', 'https://www.google.com/search?q=iphone+x&tbm=isch&ved=2ahUKEwjOneqgpJ3rAhUpJaYKHTuTBuwQ2-cCegQIABAA&oq=iphone+x&gs_lcp=CgNpbWcQAzIECCMQJzIFCAAQsQMyBAgAEEMyBQgAELEDMgQIABBDMgUIABCxAzIFCAAQsQMyBQgAELEDMgUIABCxAzIFCAAQsQM6AggAUKDgA1jl5gNglOgDaABwAHgAgAFbiAGqAZIBATKYAQCgAQGqAQtnd3Mtd2l6LWltZ8ABAQ&sclient=img&ei=2N43X87RHKnKmAW7pprgDg&bih=698&biw=1280#imgrc=CpSY7iIVDqi_xM'),
+(3, 'iodsfhiodsufo', 'dfsfdsdf', 'df'),
+(4, 'sdds', 'eweew', 'ww'),
+(5, 'kjkj', 'fgfh', 'hgh'),
+(6, 'nokia', 'dsd', 'sds');
 
 -- --------------------------------------------------------
 
@@ -165,8 +213,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `fullName`, `mobile`, `email`, `passwordHash`, `registeredAt`, `profile`, `role_id`) VALUES
-(1, 'Nguyễn Quang Trung', '0376811997', 'kevinnguyen510@gmail.com', '123456', '2020-08-18 16:38:56', NULL, 1),
-(2, 'Hoàng Thị Diễm Thi', '0123456789', 'diemthi@gmail.com', '123456', '2020-08-18 16:40:10', NULL, 2);
+(1, 'Nguyễn Quang Trung', '0376811997', 'kevinnguyen510@gmail.com', '123456', '2020-08-18 16:38:56', 'https://i.pinimg.com/originals/d9/9a/8f/d99a8fe3c574d640b9701b37799fdcbd.jpg', 1),
+(2, 'Hoàng Thị Diễm Thi', '0123456789', 'diemthi@gmail.com', '123456', '2020-08-18 16:40:10', 'https://i.pinimg.com/originals/d8/fb/b6/d8fbb62992c9be0e022f028197a9829c.jpg', 2);
 
 --
 -- Indexes for dumped tables
@@ -220,6 +268,12 @@ ALTER TABLE `post_tag`
   ADD KEY `fk_post_tag_post` (`postId`);
 
 --
+-- Indexes for table `product-category`
+--
+ALTER TABLE `product-category`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `role`
 --
 ALTER TABLE `role`
@@ -247,13 +301,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `post`
 --
 ALTER TABLE `post`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `post_comment`
@@ -266,6 +320,12 @@ ALTER TABLE `post_comment`
 --
 ALTER TABLE `post_meta`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `product-category`
+--
+ALTER TABLE `product-category`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `role`

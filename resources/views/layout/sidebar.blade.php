@@ -7,10 +7,10 @@
                       <!--<img src="{{ url('assets/images/faces/face8.jpg') }}" alt="profile image">-->
                     </div>
                     <div class="text-wrapper">
-                        <p class="profile-name">Tên tài khoản</p>
+                        <p class="profile-name">Account Name</p>
                         <div class="dropdown" data-display="static">
                             <a href="#" class="nav-link d-flex user-switch-dropdown-toggler" id="UsersettingsDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
-                                <small class="designation text-muted">Mô tả tài khoản</small>
+                                <small class="designation text-muted">Account Detail</small>
                                 <span class="status-indicator online"></span>
                             </a>
                             <div class="dropdown-menu" aria-labelledby="UsersettingsDropdown">
@@ -35,7 +35,7 @@
                         </div>
                     </div>
                 </div>
-                <button class="btn btn-success btn-block">Tạo mới <i class="mdi mdi-plus"></i>
+                <button class="btn btn-success btn-block">Create New Post <i class="mdi mdi-plus"></i>
                 </button>
             </div>
         </li>
@@ -84,19 +84,19 @@
                 <span class="menu-title">Icons</span>
               </a>
             </li>-->
-        <li class="nav-item {{ active_class(['product/*']) }}">
-            <a class="nav-link" data-toggle="collapse" href="#product-pages">
+        <li class="nav-item {{ active_class(['post/*']) }}">
+            <a class="nav-link" data-toggle="collapse" href="#post-pages">
                 <i class="menu-icon mdi mdi-lock-outline"></i>
-                <span class="menu-title">Sản phẩm</span>
+                <span class="menu-title">Post Management</span>
                 <i class="menu-arrow"></i>
             </a>
-            <div class="collapse {{ show_class(['user-pages/*']) }}" id="product-pages">
+            <div class="collapse {{ show_class(['user-pages/*']) }}" id="post-pages">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item {{ active_class(['product']) }}">
-                        <a class="nav-link" href="{{ url('/product') }}">Danh sách sản phẩm</a>
+                    <li class="nav-item {{ active_class(['post']) }}">
+                        <a class="nav-link" href="{{ url('/post') }}">List Posts</a>
                     </li>
-                    <li class="nav-item {{ active_class(['product/create']) }}">
-                        <a class="nav-link" href="{{ url('/product/create') }}">Tạo mới sản phẩm</a>
+                    <li class="nav-item {{ active_class(['post/create']) }}">
+                        <a class="nav-link" href="{{ url('/post/create') }}">Create New Post</a>
                     </li>
 
                 </ul>
@@ -105,16 +105,16 @@
         <li class="nav-item {{ active_class(['product-category/*']) }}">
             <a class="nav-link" data-toggle="collapse" href="#product-pages">
                 <i class="menu-icon mdi mdi-lock-outline"></i>
-                <span class="menu-title">Danh Mục Sản phẩm</span>
+                <span class="menu-title">Category Post Management</span>
                 <i class="menu-arrow"></i>
             </a>
             <div class="collapse {{ show_class(['user-pages/*']) }}" id="product-pages">
                 <ul class="nav flex-column sub-menu">
                     <li class="nav-item {{ active_class(['product-category']) }}">
-                        <a class="nav-link" href="{{ url('/product-category') }}">Danh sách category sản phẩm</a>
+                        <a class="nav-link" href="{{ url('/product-category') }}">List Category Post</a>
                     </li>
                     <li class="nav-item {{ active_class(['product-category/create']) }}">
-                        <a class="nav-link" href="{{ url('/product-category/create') }}">Tạo danh muc san pham moi</a>
+                        <a class="nav-link" href="{{ url('/product-category/create') }}">Create New Category Post</a>
                     </li>
 
                 </ul>
@@ -123,26 +123,26 @@
         <li class="nav-item {{ active_class(['user/*']) }}">
             <a class="nav-link" data-toggle="collapse" href="#user-pages">
                 <i class="menu-icon mdi mdi-lock-outline"></i>
-                <span class="menu-title">User Management</span>
+                <span class="menu-title">Account Management</span>
                 <i class="menu-arrow"></i>
             </a>
             <div class="collapse {{ show_class(['user-pages/*']) }}" id="user-pages">
                 <ul class="nav flex-column sub-menu">
                     <li class="nav-item {{ active_class(['user']) }}">
-                        <a class="nav-link" href="{{ url('/user') }}">User List</a>
+                        <a class="nav-link" href="{{ url('/user') }}">List Account</a>
                     </li>
                     <li class="nav-item {{ active_class(['user/create']) }}">
-                        <a class="nav-link" href="{{ url('/user/create') }}">Create New User</a>
+                        <a class="nav-link" href="{{ url('/user/create') }}">Create New Account</a>
                     </li>
 
                 </ul>
             </div>
         </li>
-        <!--------- dsdsdddsdsdssddsdsdsds-------->      
+     
         <li class="nav-item {{ active_class(['user-pages/*']) }}">
             <a class="nav-link" data-toggle="collapse" href="#user-pages" aria-expanded="{{ is_active_route(['user-pages/*']) }}" aria-controls="user-pages">
                 <i class="menu-icon mdi mdi-lock-outline"></i>
-                <span class="menu-title">Tài khoản</span>
+                <span class="menu-title">Acccount</span>
                 <i class="menu-arrow"></i>
             </a>
             <div class="collapse {{ show_class(['user-pages/*']) }}" id="user-pages">

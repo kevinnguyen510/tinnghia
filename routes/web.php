@@ -15,9 +15,9 @@ Route::get('/', function () {
     return view('dashboard');
 });
 
-Route::get('product', 'ProductController@index');
-Route::get('product/create', 'ProductController@create');
-Route::post('product/create', 'ProductController@postCreate');
+Route::get('post', 'PostController@index');
+Route::get('post/create', 'PostController@create');
+Route::post('post/create', 'PostController@postCreate');
 
 //Category
 Route::get('product-category', 'ProductCategoryController@index');
@@ -28,10 +28,17 @@ Route::get('user', 'UserController@index');
 Route::get('user/create', 'UserController@create');
 Route::post('user/create', 'UserController@postCreate');
 
+//Login
+Route::get('login','HomeController@login');  
+Route::post('login','HomeController@checkLogin');
+Route::get('logout','HomeController@logout');
 
-
-
-
+Route::prefix('admin')->name('admin')->middleware('checkLogin')->group(function(){
+    Route::get('user', 'UserController@index');
+});
+Route::prefix('user')->name('user')->middleware('checkLogin')->group(function(){
+    Route::get('post', 'PostController@index');
+});
 
 // Route::get('/','DashboardController@index');
 
@@ -111,7 +118,8 @@ Route::group(['prefix' => 'maps'], function(){
 });
 
 Route::group(['prefix' => 'user-pages'], function(){
-    Route::get('login', function () { return view('pages.user-pages.login'); });
+    Route::get('login', function () { return view('pages.user-pages.login'); });   
+    
     Route::get('login-2', function () { return view('pages.user-pages.login-2'); });
     Route::get('multi-step-login', function () { return view('pages.user-pages.multi-step-login'); });
     Route::get('register', function () { return view('pages.user-pages.register'); });
@@ -157,3 +165,7 @@ Route::get('/clear-cache', function() {
 Route::any('/{page?}',function(){
     return View::make('pages.error-pages.error-404');
 })->where('page','.*');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

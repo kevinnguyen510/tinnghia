@@ -27,7 +27,7 @@
                         <label for="">Role :</label>
                         <select class="form-control" name="txtRole">
                             @foreach ($roles as $role)
-                                <option value="{{ $role->id }}" {{ $role->id == $post->role->id ? 'selected' : '' }}>
+                                <option>
                                     {{ $role->name }}
                                 </option>
                             @endforeach

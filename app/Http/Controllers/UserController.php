@@ -36,5 +36,5 @@ class UserController extends Controller
             'profile' => $profile
         ]);
         return redirect() -> action('UserController@index');
-    }
+    }   
 }

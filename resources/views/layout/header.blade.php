@@ -11,7 +11,7 @@
     </button>
     <ul class="navbar-nav navbar-nav-left header-links">
       <li class="nav-item d-none d-xl-flex">
-        <a href="#" class="nav-link">Sản phẩm <span class="badge badge-primary ml-1">New</span>
+        <a href="#" class="nav-link">Posts <span class="badge badge-primary ml-1">New</span>
         </a>
       </li>
       <li class="nav-item active d-none d-lg-flex">
@@ -129,7 +129,7 @@
           <a class="dropdown-item mt-2"> Manage Accounts </a>
           <a class="dropdown-item"> Change Password </a>
           <a class="dropdown-item"> Check Inbox </a>
-          <a class="dropdown-item"> Sign Out </a>
+          <a class="dropdown-item" href=""> Sign Out </a>
         </div>
       </li>
     </ul>
